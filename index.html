@@ -6,17 +6,12 @@
   <title>Find Your Travel Edible | Mood</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
       background: #0A0A0A;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      box-sizing: border-box;
+      overflow-x: hidden;
     }
 
     * { box-sizing: border-box; }
@@ -24,7 +19,8 @@
     .quiz-wrapper {
       width: 100%;
       max-width: 520px;
-      position: relative;
+      margin: 0 auto;
+      padding: 24px 16px;
     }
 
     .quiz-card {
@@ -32,7 +28,7 @@
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,0.06);
       overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
 
     .progress-track {
@@ -52,7 +48,7 @@
     }
 
     .quiz-content {
-      padding: 40px 32px;
+      padding: 32px 28px;
       transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -66,211 +62,76 @@
       transform: translateY(0);
     }
 
-    /* Intro */
     .intro { text-align: center; }
-
-    .intro-icon {
-      font-size: 48px;
-      margin-bottom: 20px;
-      filter: grayscale(0.15);
-    }
-
+    .intro-icon { font-size: 44px; margin-bottom: 16px; filter: grayscale(0.15); }
     .intro h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin: 0 0 12px;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
+      font-size: 26px; font-weight: 800; color: #FFF;
+      margin: 0 0 10px; line-height: 1.2; letter-spacing: -0.02em;
     }
-
     .intro p {
-      color: rgba(255,255,255,0.5);
-      font-size: 15px;
-      line-height: 1.6;
-      margin: 0 0 32px;
-      max-width: 380px;
-      margin-left: auto;
-      margin-right: auto;
+      color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.6;
+      margin: 0 auto 28px; max-width: 360px;
     }
-
     .btn-start {
-      background: linear-gradient(135deg, #4ECDC4, #44B0A8);
-      color: #000;
-      border: none;
-      border-radius: 14px;
-      padding: 16px 48px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-      letter-spacing: 0.02em;
-      transition: transform 0.2s ease;
+      background: linear-gradient(135deg, #4ECDC4, #44B0A8); color: #000;
+      border: none; border-radius: 14px; padding: 14px 44px;
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      font-family: inherit; letter-spacing: 0.02em; transition: transform 0.2s ease;
     }
-
     .btn-start:hover { transform: scale(1.04); }
 
-    /* Question */
-    .question-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .question-step {
-      color: rgba(255,255,255,0.3);
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .question-icon { font-size: 24px; }
-
+    .question-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .question-step { color: rgba(255,255,255,0.3); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
+    .question-icon { font-size: 22px; }
     .question-text {
       font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: #FFF;
-      margin: 0 0 28px;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
+      font-size: 20px; font-weight: 700; color: #FFF;
+      margin: 0 0 22px; line-height: 1.3;
     }
-
-    .options { display: flex; flex-direction: column; gap: 10px; }
-
+    .options { display: flex; flex-direction: column; gap: 8px; }
     .option-btn {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      padding: 16px 20px;
-      color: #FFF;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      text-align: left;
-      transition: all 0.2s ease;
-      width: 100%;
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 14px 18px; color: #FFF;
+      font-size: 14px; font-weight: 500; cursor: pointer;
+      font-family: inherit; text-align: left; transition: all 0.2s ease; width: 100%;
     }
+    .option-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
+    .option-btn.selected { background: rgba(78,205,196,0.15); border-color: rgba(78,205,196,0.5); transform: scale(0.98); }
+    .option-emoji { font-size: 20px; flex-shrink: 0; }
 
-    .option-btn:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.15);
-    }
-
-    .option-btn.selected {
-      background: rgba(78, 205, 196, 0.15);
-      border-color: rgba(78, 205, 196, 0.5);
-      transform: scale(0.98);
-    }
-
-    .option-emoji { font-size: 22px; flex-shrink: 0; }
-
-    /* Result */
-    .result-header { text-align: center; margin-bottom: 28px; }
-
+    .result-header { text-align: center; margin-bottom: 22px; }
     .result-badge {
-      display: inline-block;
-      background: rgba(78, 205, 196, 0.12);
-      color: #4ECDC4;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 16px;
+      display: inline-block; background: rgba(78,205,196,0.12); color: #4ECDC4;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; padding: 5px 14px; border-radius: 100px; margin-bottom: 14px;
     }
-
     .result-name {
       font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: #FFF;
-      margin: 0 0 6px;
-      line-height: 1.25;
+      font-size: 22px; font-weight: 800; color: #FFF; margin: 0 0 4px; line-height: 1.25;
     }
-
-    .result-dose {
-      color: rgba(255,255,255,0.4);
-      font-size: 14px;
-      margin: 0;
-    }
-
-    .result-card {
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-
+    .result-dose { color: rgba(255,255,255,0.4); font-size: 13px; margin: 0; }
+    .result-card { border-radius: 16px; padding: 22px; margin-bottom: 20px; }
     .result-tagline {
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: #FFF;
-      margin: 0 0 12px;
-      line-height: 1.3;
+      font-size: 17px; font-weight: 700; color: #FFF; margin: 0 0 10px; line-height: 1.3;
     }
-
-    .result-why {
-      color: rgba(255,255,255,0.85);
-      font-size: 14px;
-      line-height: 1.65;
-      margin: 0;
-    }
-
+    .result-why { color: rgba(255,255,255,0.85); font-size: 13px; line-height: 1.65; margin: 0; }
     .result-actions { display: flex; gap: 10px; }
-
     .btn-shop {
-      flex: 1;
-      display: block;
-      text-align: center;
-      background: #FFF;
-      color: #000;
-      border-radius: 14px;
-      padding: 16px;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      font-family: inherit;
-      letter-spacing: 0.01em;
-      transition: transform 0.2s ease;
+      flex: 1; display: block; text-align: center; background: #FFF; color: #000;
+      border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 700;
+      text-decoration: none; font-family: inherit; transition: transform 0.2s ease;
     }
-
     .btn-shop:hover { transform: scale(1.03); }
-
     .btn-retake {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.6);
-      border-radius: 14px;
-      padding: 16px 24px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.2s ease;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6); border-radius: 14px; padding: 14px 22px;
+      font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; transition: all 0.2s ease;
     }
-
-    .btn-retake:hover {
-      color: #FFF;
-      border-color: rgba(255,255,255,0.25);
-    }
-
-    .footer-note {
-      text-align: center;
-      color: rgba(255,255,255,0.2);
-      font-size: 11px;
-      margin-top: 20px;
-      line-height: 1.5;
-    }
-
+    .btn-retake:hover { color: #FFF; border-color: rgba(255,255,255,0.25); }
+    .footer-note { text-align: center; color: rgba(255,255,255,0.2); font-size: 11px; margin-top: 16px; line-height: 1.5; }
     .hidden { display: none; }
   </style>
 </head>
@@ -282,18 +143,13 @@
         <div class="progress-bar" id="progressBar"></div>
       </div>
       <div class="quiz-content fade-in" id="quizContent">
-        <!-- Intro Screen -->
         <div id="introScreen" class="intro">
           <div class="intro-icon">✈️</div>
           <h1>Find Your Travel Edible</h1>
           <p>Answer 4 quick questions and we'll match you with the perfect Mood gummy for your next trip.</p>
           <button class="btn-start" id="btnStart">Let's Go</button>
         </div>
-
-        <!-- Question Screen -->
         <div id="questionScreen" class="hidden"></div>
-
-        <!-- Result Screen -->
         <div id="resultScreen" class="hidden"></div>
       </div>
     </div>
@@ -301,164 +157,93 @@
   </div>
 
   <script>
-    const QUESTIONS = [
-      {
-        id: "trip",
-        question: "What kind of trip are you taking?",
-        icon: "✈️",
-        options: [
-          { label: "Business / Work", value: "business", icon: "💼" },
-          { label: "Vacation / Leisure", value: "vacation", icon: "🏖️" },
-          { label: "Long-Haul / Red-Eye", value: "longhaul", icon: "🌙" },
-          { label: "Weekend Getaway", value: "weekend", icon: "🚗" }
-        ]
-      },
-      {
-        id: "timing",
-        question: "How quickly do you want effects to kick in?",
-        icon: "⏱️",
-        options: [
-          { label: "Fast — 15–20 min", value: "fast", icon: "⚡" },
-          { label: "Standard — 45–90 min", value: "standard", icon: "⏳" },
-          { label: "No preference", value: "any", icon: "🤷" }
-        ]
-      },
-      {
-        id: "experience",
-        question: "What's your experience level with edibles?",
-        icon: "🌱",
-        options: [
-          { label: "New to edibles", value: "beginner", icon: "🌱" },
-          { label: "Occasional user", value: "moderate", icon: "🌿" },
-          { label: "Experienced", value: "experienced", icon: "🌳" }
-        ]
-      },
-      {
-        id: "goal",
-        question: "What's the main goal for your trip?",
-        icon: "🎯",
-        options: [
-          { label: "Stay sharp & relaxed", value: "sharp", icon: "🧠" },
-          { label: "Full-body unwind", value: "unwind", icon: "🛋️" },
-          { label: "Help with sleep / jet lag", value: "sleep", icon: "😴" },
-          { label: "Quick relief on arrival", value: "quick", icon: "🏃" }
-        ]
-      }
+    var QUESTIONS = [
+      { id: "trip", question: "What kind of trip are you taking?", icon: "✈️", options: [
+        { label: "Business / Work", value: "business", icon: "💼" },
+        { label: "Vacation / Leisure", value: "vacation", icon: "🏖️" },
+        { label: "Long-Haul / Red-Eye", value: "longhaul", icon: "🌙" },
+        { label: "Weekend Getaway", value: "weekend", icon: "🚗" }
+      ]},
+      { id: "timing", question: "How quickly do you want effects to kick in?", icon: "⏱️", options: [
+        { label: "Fast — 15–20 min", value: "fast", icon: "⚡" },
+        { label: "Standard — 45–90 min", value: "standard", icon: "⏳" },
+        { label: "No preference", value: "any", icon: "🤷" }
+      ]},
+      { id: "experience", question: "What's your experience level with edibles?", icon: "🌱", options: [
+        { label: "New to edibles", value: "beginner", icon: "🌱" },
+        { label: "Occasional user", value: "moderate", icon: "🌿" },
+        { label: "Experienced", value: "experienced", icon: "🌳" }
+      ]},
+      { id: "goal", question: "What's the main goal for your trip?", icon: "🎯", options: [
+        { label: "Stay sharp & relaxed", value: "sharp", icon: "🧠" },
+        { label: "Full-body unwind", value: "unwind", icon: "🛋️" },
+        { label: "Help with sleep / jet lag", value: "sleep", icon: "😴" },
+        { label: "Quick relief on arrival", value: "quick", icon: "🏃" }
+      ]}
     ];
 
-    const RESULTS = {
-      microdose: {
-        name: "Micro-Dose Delta-9 THC Gummies",
-        dose: "5mg per gummy",
-        tagline: "Low-key calm without the fog",
-        why: "Perfect for business settings where you need to stay sharp. Subtle enough to keep you composed through meetings and networking, with discreet pharmacy-style packaging that blends right into your laptop bag.",
-        url: "https://mood.com/product/micro-dose-delta-9-thc-gummies",
-        gradient: "linear-gradient(135deg, #4ECDC4 0%, #2C8C85 100%)"
-      },
-      standard: {
-        name: "15mg Delta-9 THC Gummies",
-        dose: "15mg per gummy",
-        tagline: "Mood's #1 bestseller for a reason",
-        why: "Trusted by 900,000+ customers, these deliver full-body relaxation ideal for vacation mode. Heat-sealed packaging stays fresh throughout your trip, and they look just like regular vitamins in your carry-on.",
-        url: "https://mood.com/product/15mg-delta-9-thc-gummies",
-        gradient: "linear-gradient(135deg, #FF6B6B 0%, #C0392B 100%)"
-      },
-      sleepytime: {
-        name: "Sleepytime Delta-9 THC Gummies",
-        dose: "Rest-focused formula",
-        tagline: "Reset your clock, wherever you land",
-        why: "Designed specifically for sleep support when your internal clock is off. A smart addition to any long-haul traveler's carry-on for beating jet lag and transitioning into rest mode after red-eye flights.",
-        url: "https://mood.com/product/sleepytime-delta-9-thc-gummies",
-        gradient: "linear-gradient(135deg, #9B59B6 0%, #6C3483 100%)"
-      },
-      rapid: {
-        name: "Rapid Onset Delta-9 THC Gummies",
-        dose: "Fast-acting formula",
-        tagline: "From landing to unwinding in 15 minutes",
-        why: "Nano-emulsion technology means effects hit in roughly 15–20 minutes instead of 45–90. Ideal when travel delays eat into your relaxation time and you want to unwind fast after touchdown.",
-        url: "https://mood.com/product/rapid-onset-delta-9-thc-gummies",
-        gradient: "linear-gradient(135deg, #F39C12 0%, #D68910 100%)"
-      }
+    var RESULTS = {
+      microdose: { name: "Micro-Dose Delta-9 THC Gummies", dose: "5mg per gummy", tagline: "Low-key calm without the fog", why: "Perfect for business settings where you need to stay sharp. Subtle enough to keep you composed through meetings and networking, with discreet pharmacy-style packaging that blends right into your laptop bag.", url: "https://mood.com/product/micro-dose-delta-9-thc-gummies", gradient: "linear-gradient(135deg, #4ECDC4 0%, #2C8C85 100%)" },
+      standard: { name: "15mg Delta-9 THC Gummies", dose: "15mg per gummy", tagline: "Mood's #1 bestseller for a reason", why: "Trusted by 900,000+ customers, these deliver full-body relaxation ideal for vacation mode. Heat-sealed packaging stays fresh throughout your trip, and they look just like regular vitamins in your carry-on.", url: "https://mood.com/product/15mg-delta-9-thc-gummies", gradient: "linear-gradient(135deg, #FF6B6B 0%, #C0392B 100%)" },
+      sleepytime: { name: "Sleepytime Delta-9 THC Gummies", dose: "Rest-focused formula", tagline: "Reset your clock, wherever you land", why: "Designed specifically for sleep support when your internal clock is off. A smart addition to any long-haul traveler's carry-on for beating jet lag and transitioning into rest mode after red-eye flights.", url: "https://mood.com/product/sleepytime-delta-9-thc-gummies", gradient: "linear-gradient(135deg, #9B59B6 0%, #6C3483 100%)" },
+      rapid: { name: "Rapid Onset Delta-9 THC Gummies", dose: "Fast-acting formula", tagline: "From landing to unwinding in 15 minutes", why: "Nano-emulsion technology means effects hit in roughly 15–20 minutes instead of 45–90. Ideal when travel delays eat into your relaxation time and you want to unwind fast after touchdown.", url: "https://mood.com/product/rapid-onset-delta-9-thc-gummies", gradient: "linear-gradient(135deg, #F39C12 0%, #D68910 100%)" }
     };
 
-    let currentStep = -1;
-    let answers = {};
+    var currentStep = -1;
+    var answers = {};
+    var quizContent = document.getElementById("quizContent");
+    var introScreen = document.getElementById("introScreen");
+    var questionScreen = document.getElementById("questionScreen");
+    var resultScreen = document.getElementById("resultScreen");
+    var progressTrack = document.getElementById("progressTrack");
+    var progressBar = document.getElementById("progressBar");
 
-    const quizContent = document.getElementById("quizContent");
-    const introScreen = document.getElementById("introScreen");
-    const questionScreen = document.getElementById("questionScreen");
-    const resultScreen = document.getElementById("resultScreen");
-    const progressTrack = document.getElementById("progressTrack");
-    const progressBar = document.getElementById("progressBar");
-    const btnStart = document.getElementById("btnStart");
+    function sendHeight() {
+      var h = document.documentElement.scrollHeight;
+      window.parent.postMessage({ type: "quiz-resize", height: h }, "*");
+    }
 
-    btnStart.addEventListener("click", () => {
-      currentStep = 0;
-      answers = {};
-      transitionTo(() => showQuestion());
+    document.getElementById("btnStart").addEventListener("click", function() {
+      currentStep = 0; answers = {};
+      transitionTo(showQuestion);
     });
 
-    function transitionTo(callback) {
+    function transitionTo(cb) {
       quizContent.classList.remove("fade-in");
       quizContent.classList.add("fade-out");
-      setTimeout(() => {
-        callback();
+      setTimeout(function() {
+        cb();
         quizContent.classList.remove("fade-out");
         quizContent.classList.add("fade-in");
+        setTimeout(sendHeight, 100);
       }, 300);
     }
 
     function showQuestion() {
-      const q = QUESTIONS[currentStep];
+      var q = QUESTIONS[currentStep];
       introScreen.classList.add("hidden");
       resultScreen.classList.add("hidden");
       questionScreen.classList.remove("hidden");
       progressTrack.classList.add("active");
       progressBar.style.width = ((currentStep + 1) / QUESTIONS.length * 100) + "%";
-
-      questionScreen.innerHTML = `
-        <div class="question-header">
-          <span class="question-step">Question ${currentStep + 1} of ${QUESTIONS.length}</span>
-          <span class="question-icon">${q.icon}</span>
-        </div>
-        <h2 class="question-text">${q.question}</h2>
-        <div class="options">
-          ${q.options.map(opt => `
-            <button class="option-btn" data-qid="${q.id}" data-value="${opt.value}">
-              <span class="option-emoji">${opt.icon}</span>
-              <span>${opt.label}</span>
-            </button>
-          `).join("")}
-        </div>
-      `;
-
-      questionScreen.querySelectorAll(".option-btn").forEach(btn => {
-        btn.addEventListener("click", handleOptionClick);
-      });
+      var html = '<div class="question-header"><span class="question-step">Question ' + (currentStep + 1) + ' of ' + QUESTIONS.length + '</span><span class="question-icon">' + q.icon + '</span></div><h2 class="question-text">' + q.question + '</h2><div class="options">';
+      for (var i = 0; i < q.options.length; i++) {
+        var o = q.options[i];
+        html += '<button class="option-btn" data-qid="' + q.id + '" data-value="' + o.value + '"><span class="option-emoji">' + o.icon + '</span><span>' + o.label + '</span></button>';
+      }
+      html += '</div>';
+      questionScreen.innerHTML = html;
+      questionScreen.querySelectorAll(".option-btn").forEach(function(btn) { btn.addEventListener("click", handleOptionClick); });
     }
 
     function handleOptionClick(e) {
-      const btn = e.currentTarget;
-      const qid = btn.dataset.qid;
-      const value = btn.dataset.value;
-
+      var btn = e.currentTarget;
       btn.classList.add("selected");
-      answers[qid] = value;
-
-      // Remove click listeners to prevent double-clicks
-      questionScreen.querySelectorAll(".option-btn").forEach(b => {
-        b.removeEventListener("click", handleOptionClick);
-        b.style.pointerEvents = "none";
-      });
-
-      setTimeout(() => {
-        if (currentStep < QUESTIONS.length - 1) {
-          currentStep++;
-          transitionTo(() => showQuestion());
-        } else {
-          const resultKey = getResult(answers);
-          transitionTo(() => showResult(RESULTS[resultKey]));
-        }
+      answers[btn.dataset.qid] = btn.dataset.value;
+      questionScreen.querySelectorAll(".option-btn").forEach(function(b) { b.style.pointerEvents = "none"; });
+      setTimeout(function() {
+        if (currentStep < QUESTIONS.length - 1) { currentStep++; transitionTo(showQuestion); }
+        else { transitionTo(function() { showResult(RESULTS[getResult(answers)]); }); }
       }, 400);
     }
 
@@ -473,34 +258,17 @@
       questionScreen.classList.add("hidden");
       resultScreen.classList.remove("hidden");
       progressTrack.classList.remove("active");
-
-      resultScreen.innerHTML = `
-        <div class="result-header">
-          <div class="result-badge">Your Match</div>
-          <h2 class="result-name">${r.name}</h2>
-          <p class="result-dose">${r.dose}</p>
-        </div>
-        <div class="result-card" style="background: ${r.gradient};">
-          <p class="result-tagline">${r.tagline}</p>
-          <p class="result-why">${r.why}</p>
-        </div>
-        <div class="result-actions">
-          <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="btn-shop">Shop Now</a>
-          <button class="btn-retake" id="btnRetake">Retake</button>
-        </div>
-      `;
-
-      document.getElementById("btnRetake").addEventListener("click", () => {
-        currentStep = -1;
-        answers = {};
-        transitionTo(() => {
-          questionScreen.classList.add("hidden");
-          resultScreen.classList.add("hidden");
-          introScreen.classList.remove("hidden");
-          progressTrack.classList.remove("active");
+      resultScreen.innerHTML = '<div class="result-header"><div class="result-badge">Your Match</div><h2 class="result-name">' + r.name + '</h2><p class="result-dose">' + r.dose + '</p></div><div class="result-card" style="background:' + r.gradient + '"><p class="result-tagline">' + r.tagline + '</p><p class="result-why">' + r.why + '</p></div><div class="result-actions"><a href="' + r.url + '" target="_blank" rel="noopener noreferrer" class="btn-shop">Shop Now</a><button class="btn-retake" id="btnRetake">Retake</button></div>';
+      document.getElementById("btnRetake").addEventListener("click", function() {
+        currentStep = -1; answers = {};
+        transitionTo(function() {
+          questionScreen.classList.add("hidden"); resultScreen.classList.add("hidden");
+          introScreen.classList.remove("hidden"); progressTrack.classList.remove("active");
         });
       });
     }
+
+    window.addEventListener("load", sendHeight);
   </script>
 </body>
 </html>
